@@ -2,6 +2,7 @@ import path from 'path'
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import productRoutes from './productRoutes.js'
 
 // Initialize Dot Env File
 dotenv.config()
@@ -45,6 +46,9 @@ if (process.env.NODE_ENV === 'production') {
     res.send('API is running ....')
   })
 }
+
+// Setup Routes
+app.use('/api/products', productRoutes)
 
 // Set up backend to listen to PORT 5000
 const PORT = process.env.PORT || 5000
